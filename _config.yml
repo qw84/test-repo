@@ -1,7 +1,7 @@
 title: "CYBERTEST"
 description: "GitHub Pages Test"
 baseurl: ""
-url: ""
+url: "https://qw84.github.io"
 
 markdown: kramdown
 permalink: /:year/:title/
@@ -26,4 +26,5 @@ defaults:
     values:
       layout: page
       title: Posts
+
       tags: []
