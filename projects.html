@@ -1,0 +1,46 @@
+---
+layout: page
+title: Projects
+permalink: /projects.html
+css:
+    - /css/browse.css
+---
+<style>#projects {background:linear-gradient(to left,rgba(0, 0, 0, 0),rgba(50, 50, 50, 0.3));color:#ddd;}</style>
+<section class="thirteen columns">
+    <article id="search-container">
+        <div class="search-form">
+            <p id="search-tabs">
+                <a href="{{ '/posts.html' | relative_url }}" data-tab="posts">Posts<span class="count-badge" id="posts-count">0</span></a>
+                <a href="{{ '/projects.html' | relative_url }}" class="active" data-tab="projects">Projects<span class="count-badge" id="projects-count">0</span></a>
+            </p>
+            <input type="text" class="search-input" id="search-wide" placeholder="">
+            <button id="search-button">Search</button>
+            <div id="tag-container">
+                <p>Tags:</p>
+                <div id="selected-tags"></div>
+                <div class="tags-dropdown-wrapper">
+                    <button id="toggle-tags">+</button>
+                    <div id="available-tags-dropdown" class="dropdown-tags">
+                        <div id="available-tags"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <br>
+    <article id="browse-container">
+        <div class="posts-list">
+            {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
+            {% for project in sorted_projects %}
+                <a class="post-item-link" href="{{ project.url }}">
+                    <div class="post-content">
+                        <span class="post-title">{{ project.title }}</span>
+                        <span class="date">{{ project.date | date: "%Y-%m-%d" }}</span>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </article>
+    <br><br>
+    <script src="/js/search.js"></script>
+</section>

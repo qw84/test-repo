@@ -1,0 +1,29 @@
+title: "CYBERTEST"
+description: "GitHub Pages Test"
+baseurl: ""
+url: ""
+
+markdown: kramdown
+permalink: /:year/:title/
+
+plugins:
+  - jekyll-feed
+
+collections:
+  projects:
+    output: true
+    permalink: /:name.html
+
+defaults:
+  - scope:
+      path: "projects.html"
+    values:
+      layout: page
+      title: Projects
+      tags: []
+  - scope:
+      path: "posts.html"
+    values:
+      layout: page
+      title: Posts
+      tags: []

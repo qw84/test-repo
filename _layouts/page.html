@@ -1,0 +1,73 @@
+---
+layout: base
+---
+<div class="sixteen columns">
+    <section class="ten columns alpha">
+        <aside class="three columns alpha leftSideBar">
+            <article id="navigation">
+                <h3 class="title">Navigation</h3>
+                <a href="{{ '/index.html' | relative_url }}" id="home" class="nav-button">[ Home ]</a>
+                <a href="{{ '/posts.html' | relative_url }}" id="posts" class="nav-button">[ Posts ]</a>
+                <a href="{{ '/projects.html' | relative_url }}" id="projects" class="nav-button">[ Projects ]</a>
+                <a href="{{ '/about.html' | relative_url }}" id="about" class="nav-button">[ About ]</a>
+                <p class="search-container">
+                    <input type="text" class="search-input" id="sidebar-search" placeholder=" Search">
+                </p>
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const sidebarSearch = document.getElementById('sidebar-search');
+                    if (sidebarSearch) {
+                        sidebarSearch.addEventListener('keyup', function(e) {
+                            if (e.key === 'Enter') {
+                                const query = this.value.trim();
+                                if (query) {
+                                    sessionStorage.setItem('searchQuery', query);
+                                    window.location.href = "{{ '/posts.html' | relative_url }}";
+                                }
+                            }
+                        });
+                    }
+                });
+                </script>
+            </article>
+            <article id="lastviewed">
+                    <article id="recently-viewed">
+                        <h3 class="title">Last Viewed</h3>
+                        <div id="recently-viewed-list"></div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const recentPosts = JSON.parse(localStorage.getItem('recent_posts') || []);
+                                const recentlyViewedSection = document.getElementById('recently-viewed');
+                                const recentlyViewedList = document.getElementById('recently-viewed-list');
+                                if (!recentlyViewedSection || !recentlyViewedList) return;
+                                if (recentPosts.length > 0) {
+                                    let html = '<ul>';
+                                    recentPosts.forEach(post => {
+                                        html += `<li><a href="${post.url}">${post.title}</a></li>`;
+                                    });
+                                    html += '</ul>';
+                                    recentlyViewedList.innerHTML = html;
+                                } else {
+                                    recentlyViewedSection.style.display = 'none';
+                                }
+                            });
+                        </script>
+                    </article>
+            </article>
+            <article id="links">
+                <h3 class="title">Contacts</h3>
+                <p>
+                    <li><a href="mailto:me@gmail.com">admin@proton.me</a><br></li>
+                    <li><a href="#">LinkedIn</a><br></li>
+                    <li><a href="#">GitHub</a><br></li>
+                    <li><a href="#">Telegram</a><br><br></li>
+                    <li><a href="#">GPG Public Key</a><br></li>
+                    <li><a href="#">SSH Public Key</a></li>
+                </p>
+            </article>
+        </aside>
+        <section class="seven columns alpha main">
+            {{ content }}
+        </section>
+    </section>
+</div>

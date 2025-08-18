@@ -1,0 +1,37 @@
+---
+layout: page
+---
+<!-- <link rel="stylesheet" href="{{ '/css/post.css' | relative_url }}"> -->
+<script>
+    (function() {
+        const sanitize = (str, maxLength = 100) => {
+            if (typeof str !== 'string') return '';
+            const sanitized = str
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .substring(0, maxLength);
+            return sanitized;
+        };
+        const postData = {
+            title: sanitize({{ page.title | jsonify }} || ''),
+            url: sanitize("{{ page.url | relative_url }}")
+        };
+        let recentPosts = JSON.parse(localStorage.getItem('recent_posts') || '[]');
+        recentPosts = recentPosts.filter(post => post.url !== postData.url);
+        recentPosts.unshift(postData);
+        recentPosts = recentPosts.slice(0, 3);
+        localStorage.setItem('recent_posts', JSON.stringify(recentPosts));
+    })();
+</script>
+<section class="thirteen columns alpha main">
+    <article class="thirteen columns content">
+        <h2 class="title">{{ page.title }}</h2>
+        <p class="byline">Posted {{ page.date | date: "%Y-%m-%d" }}</p>
+        {{ content }}
+        {% if page.link %}
+        <p><a href="{{ page.link }}">Attached PDF</a></p>
+        {% endif %}
+        <br><br>
+    </article>
+</section>
+finalize[0]*

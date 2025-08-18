@@ -1,0 +1,60 @@
+---
+layout: page
+title: Posts
+permalink: /posts.html
+css:
+    - /css/browse.css
+---
+<style>#posts {background:linear-gradient(to left,rgba(0, 0, 0, 0),rgba(50, 50, 50, 0.3));color:#ddd;}</style>
+<section class="thirteen columns">
+    <article id="search-container">
+        <div class="search-form">
+            <p id="search-tabs">
+                <a href="{{ '/posts.html' | relative_url }}" class="active" data-tab="posts">Posts<span class="count-badge" id="posts-count">0</span></a>
+                <a href="{{ '/projects.html' | relative_url }}" data-tab="projects">Projects<span class="count-badge" id="projects-count">0</span></a>
+            </p>
+            <input type="text" class="search-input" id="search-wide" placeholder="">
+            <button id="search-button">Search</button>
+            <div id="tag-container">
+                <p>Tags:</p>
+                <div id="selected-tags"></div>
+                <div class="tags-dropdown-wrapper">
+                    <button id="toggle-tags">+</button>
+                    <div id="available-tags-dropdown" class="dropdown-tags">
+                        <div id="available-tags"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <br>
+    <article id="browse-container">
+        <div class="posts-list">
+            {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+            {% for post in sorted_posts %}
+                <a class="post-item-link" href="{{ post.url }}">
+                    <div class="post-content">
+                        <span class="post-title">{{ post.title }}</span>
+                        <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </article>
+    <br><br>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedQuery = sessionStorage.getItem('searchQuery');
+            if (savedQuery) {
+                setTimeout(() => {
+                    const searchInput = document.getElementById('search-wide');
+                    if (searchInput) {
+                        searchInput.value = savedQuery;
+                        sessionStorage.removeItem('searchQuery');
+                    }
+                }, 50);
+            }
+        });
+    </script>
+    <script src="/js/search.js"></script>
+</section>

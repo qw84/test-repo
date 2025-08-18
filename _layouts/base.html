@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="description" content="DESCRIPTION">
+    <link rel="stylesheet" href="{{ '/css/base.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/skeleton.css' | relative_url }}">
+    {% if page.css %}
+      {% for stylesheet in page.css %}
+        <link rel="stylesheet" href="{{ stylesheet | relative_url }}">
+      {% endfor %}
+    {% endif %}
+</head>
+<body>
+  <div class="container">
+      <header class="sixteen columns header">
+          <h1>_CYBERTEST</h1>
+          <h2>{{ page.title }}</h2>
+      </header>
+      {{ content }}
+  </div>
+  <script>
+  (function() {
+      const path = window.location.pathname;
+      if (!path.includes('/posts.html') && !path.includes('/projects.html')) {
+          sessionStorage.removeItem('searchState');
+          sessionStorage.removeItem('searchQuery');
+      }
+  })();
+  </script>
+</body>
+</html>
