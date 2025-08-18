@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const availableTagsDropdown = document.getElementById('available-tags-dropdown');
     const availableTagsContainer = document.getElementById('available-tags');
     if (!searchInput || !searchButton || !postsList) return;
-    const isPostsPage = window.location.pathname.includes('{{ site.baseurl }}/posts.html');
-    const isProjectsPage = window.location.pathname.includes('{{ site.baseurl }}/projects.html');
+    const isPostsPage = window.location.pathname.includes('/posts.html');
+    const isProjectsPage = window.location.pathname.includes('/projects.html');
     
     const originalHTML = postsList.innerHTML;
     let allPosts = [];
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         return false;
     }
-    fetch('{{ site.baseurl }}/data.json')
+    fetch('/test-repo/data.json')
     .then(res => res.json())
     .then(data => {
         allPosts = data.posts || [];
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let newHTML = '';
         results.forEach(item => {
             newHTML += `
-                <a class="post-item-link" href="${item.url}">
+                <a class="post-item-link" href="{{ site.baseurl }}${item.url}">
                     <div class="post-content">
                         <span class="post-title">${item.title}</span>
                         <span class="date">${item.date}</span>
@@ -179,4 +179,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     renderSelectedTags();
 });
-
