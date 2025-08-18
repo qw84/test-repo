@@ -22,7 +22,7 @@ layout: base
                                 const query = this.value.trim();
                                 if (query) {
                                     sessionStorage.setItem('searchQuery', query);
-                                    window.location.href = "{{ '/posts.html' | relative_url }}";
+                                    window.location.href = "{{ site.baseurl }}/posts.html";
                                 }
                             }
                         });
@@ -57,7 +57,7 @@ layout: base
             <article id="links">
                 <h3 class="title">Contacts</h3>
                 <p>
-                    <li><a href="mailto:me@gmail.com">admin@proton.me</a><br></li>
+                    <li><a href="mailto:test@gmail.com">test@gmail.com</a><br></li>
                     <li><a href="#">LinkedIn</a><br></li>
                     <li><a href="#">GitHub</a><br></li>
                     <li><a href="#">Telegram</a><br><br></li>

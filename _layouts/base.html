@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ page.title }} | {{ site.title }}</title>
+    <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
     <meta name="description" content="DESCRIPTION">
     <link rel="stylesheet" href="{{ '/css/base.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/css/skeleton.css' | relative_url }}">
