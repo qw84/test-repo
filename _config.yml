@@ -1,6 +1,6 @@
 title: "CYBERTEST"
 description: "GitHub Pages Test"
-baseurl: ""
+baseurl: "/test-repo"
 url: "https://qw84.github.io"
 
 markdown: kramdown
@@ -28,3 +28,4 @@ defaults:
       title: Posts
 
       tags: []
+
