@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         return false;
     }
-    fetch('/data.json')
+    fetch('{{ site.baseurl }}/data.json')
     .then(res => res.json())
     .then(data => {
         allPosts = data.posts || [];
@@ -178,4 +178,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     renderSelectedTags();
+
 });
