@@ -9,7 +9,7 @@ css:
 <h3 id="recentposts" class="title">Recently Added</h3>
 {% for post in site.posts limit:4 %}
 <article class="seven columns feature" id="post-{{ forloop.index }}">
-  <a href="{{ post.url }}"><h3 class="title">{{ post.title }}</h3></a><br>
+  <a href="{{ site.baseurl }}{{ post.url }}"><h3 class="title">{{ post.title }}</h3></a><br>
   <p>{{ post.excerpt | default: post.content | truncatewords: 50 }}<br>
   <div class="post-footer">
       <a class="title" href="{{ post.url }}">[Read]</a>
@@ -18,7 +18,7 @@ css:
   </p>
 </article>
 {% endfor %}
-<p class="title" id="seemore"><a href="{{ '/posts.html' | relative_url }}">See all posts</a></p>
+<p class="title" id="seemore"><a href="{{ site.baseurl }}/posts.html">See all posts</a></p>
 </section>
 </section>
 <aside class="six columns alpha rightSideBar">
@@ -32,3 +32,4 @@ css:
         </div>
     </article>  
 </aside>
+
