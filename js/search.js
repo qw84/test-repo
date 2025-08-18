@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const availableTagsDropdown = document.getElementById('available-tags-dropdown');
     const availableTagsContainer = document.getElementById('available-tags');
     if (!searchInput || !searchButton || !postsList) return;
-    const isPostsPage = window.location.pathname.includes('/posts.html');
-    const isProjectsPage = window.location.pathname.includes('/projects.html');
+    const isPostsPage = window.location.pathname.includes('{{ site.baseurl }}/posts.html');
+    const isProjectsPage = window.location.pathname.includes('{{ site.baseurl }}/projects.html');
     
     const originalHTML = postsList.innerHTML;
     let allPosts = [];
@@ -178,5 +178,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     renderSelectedTags();
-
 });
+
