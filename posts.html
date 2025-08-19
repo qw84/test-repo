@@ -32,7 +32,7 @@ css:
         <div class="posts-list">
             {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
             {% for post in sorted_posts %}
-                <a class="post-item-link" href="{{ site.baseurl }}{{ post.url }}">
+                <a class="post-item-link" href="{{ post.url | absolute_url }}">
                     <div class="post-content">
                         <span class="post-title">{{ post.title }}</span>
                         <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
@@ -58,4 +58,3 @@ css:
     </script>
     <script src="{{ site.baseurl }}/js/search.js"></script>
 </section>
-

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const baseurl = window.SITE_CONFIG?.baseurl || "";
     const searchInput = document.getElementById('search-wide');
     const searchButton = document.getElementById('search-button');
     const postsList = document.querySelector('.posts-list');
@@ -151,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let newHTML = '';
         results.forEach(item => {
             newHTML += `
-                <a class="post-item-link" href="{{ site.baseurl }}${item.url}">
+                <a class="post-item-link" href="${baseurl}${item.url}">
                     <div class="post-content">
                         <span class="post-title">${item.title}</span>
                         <span class="date">${item.date}</span>

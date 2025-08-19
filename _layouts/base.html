@@ -21,6 +21,10 @@
       {{ content }}
   </div>
   <script>
+  window.SITE_CONFIG = {
+      baseurl: "{{ site.baseurl }}"
+  };
+
   (function() {
       const path = window.location.pathname;
       if (!path.includes('/posts.html') && !path.includes('/projects.html')) {
