@@ -12,7 +12,7 @@ plugins:
 collections:
   projects:
     output: true
-    permalink: /:name.html
+    permalink: /:year/:title/
 
 defaults:
   - scope:
@@ -26,6 +26,4 @@ defaults:
     values:
       layout: page
       title: Posts
-
       tags: []
-
